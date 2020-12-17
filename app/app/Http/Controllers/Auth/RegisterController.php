@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -49,11 +49,33 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_name' => ['required', 'string', 'max:255'],
+            'user_mail' => ['required', 'string', 'email', 'max:255', 'unique:user_info'],
+            'user_password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_kana' => ['required', 'string', 'max:255'],
+            'user_employee_number' => ['required', 'string', 'max:255', 'unique:user_info'],
+            'user_gender' => ['required', 'string', 'max:255'],
+            'user_department' => ['required', 'string', 'max:255'],
+            'user_category' => ['required', 'string', 'max:255'],
+            'user_position' => ['required', 'string', 'max:255'],
+            'user_nearest_station' => ['required', 'string', 'max:255'],
+            'user_office_station' => ['required', 'string', 'max:255'],
+        ], [], [
+            'user_name' => '名前',
+            'user_mail' => 'メールアドレス',
+            'user_password' => 'パスワード',
+            'user_kana' => 'フリガナ',
+            'user_employee_number' => '社員番号',
+            'user_gender' => '性別',
+            'user_department' => '部署',
+            'user_category' => '部門',
+            'user_position' => '役職',
+            'user_nearest_station' => '自宅最寄駅',
+            'user_office_station' => '勤務先最寄駅',
         ]);
     }
+
+ 
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,9 +86,17 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'user_name' => $data['user_name'],
+            'user_kana' => $data['user_kana'],
+            'user_mail' => $data['user_mail'],
+            'user_employee_number' => $data['user_employee_number'],
+            'user_gender' => $data['user_gender'],
+            'user_department' => $data['user_department'],
+            'user_category' => $data['user_category'],
+            'user_position' => $data['user_position'],
+            'user_nearest_station' => $data['user_nearest_station'],
+            'user_office_station' => $data['user_office_station'],
+            'user_password' => Hash::make($data['user_password']),
         ]);
     }
 }

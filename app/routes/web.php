@@ -30,7 +30,7 @@ use App\Http\Controllers\RegisterController;
 // Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
 
 // Laravel８.０以降の記述法
-// Auth::routes();
+Auth::routes();
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 
