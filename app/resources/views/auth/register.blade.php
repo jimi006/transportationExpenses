@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">会員登録<span class="label label-danger">必須</span></div>
+          <div class="panel-heading">ユーザー登録<span class="label label-danger">必須</span></div>
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">
@@ -79,12 +79,12 @@
 
               <div class="form-row">
                 <div class="form-group col-sm-6">
-                  <label for="user_password">パスワード</label>
-                  <input type="password" class="form-control" id="user_password" name="user_password">
+                  <label for="password">パスワード</label>
+                  <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="form-group col-sm-6">
-                  <label for="user_password-confirm">パスワード（確認）</label>
-                  <input type="password" class="form-control" id="user_password-confirm" name="user_password_confirmation">
+                  <label for="password-confirm">パスワード（確認）</label>
+                  <input type="password" class="form-control" id="password-confirm" name="password_confirmation">
                 </div>
               </div>
 
