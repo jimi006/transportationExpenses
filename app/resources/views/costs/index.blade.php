@@ -7,7 +7,7 @@
         <nav class="panel panel-default">
           <div class="panel-heading">交通費申請フォーム</div>
           <div class="panel-body">
-            <a href="#" class="btn btn-default btn-block">
+            <a href="{{ route('mypage.create') }}" class="btn btn-default btn-block">
              交通費を申請する
             </a>
           </div>
