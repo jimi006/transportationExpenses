@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Traffic;
+use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateTraffic;
 
 class TrafficController extends Controller
 {
@@ -12,11 +15,11 @@ class TrafficController extends Controller
         return view('mypage/create');
     }
 
-    public function create(Request $request)
+    public function create(CreateTraffic $request)
     {
-    // フォルダモデルのインスタンスを作成する
+    // トラフィックモデルのインスタンスを作成する
         $traffic = new Traffic();
-    // タイトルに入力値を代入する
+    // 入力値を代入する
         $traffic->user_employee_number=$request->user_employee_number;
         $traffic->traffic_type = $request->traffic_type;
         $traffic->traffic_billing_destination = $request->traffic_billing_destination;
@@ -28,6 +31,7 @@ class TrafficController extends Controller
         $traffic->traffic_user_comments = $request->traffic_user_comments;
     // インスタンスの状態をデータベースに書き込む
         $traffic->save();
+        // Auth::user()->traffics()->save($traffic);
 
         return redirect()->route('costs.index', [
         'id' => $traffic->id,

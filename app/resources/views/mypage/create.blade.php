@@ -9,9 +9,18 @@
     <div class="container">
       <div class="row">
         <div class="col col-md-offset-3 col-md-6">
-          <nav class="panel panel-default">
+          <nav class="panel panel-info">
             <div class="panel-heading">交通費申請フォーム</div>
             <div class="panel-body">
+            @if($errors->any())
+             <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $message)
+                     <li>{{ $message }}</li>
+                    @endforeach
+               </ul>
+             </div>
+            @endif
               <form action="{{ route('mypage.create') }}" method="post">
                 @csrf
 

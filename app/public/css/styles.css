@@ -11,7 +11,7 @@ body {
 
 .my-navbar {
   align-items: center;
-  background: #333;
+  background-color: #333;
   display: flex;
   height: 6rem;
   justify-content: space-between;
@@ -23,14 +23,15 @@ body {
   font-size: 18px;
 }
 
+
 .my-navbar-brand,
 .my-navbar-item {
-  color: #8c8c8c;
+  color: #fff;
 }
 
 .my-navbar-brand:hover,
 a.my-navbar-item:hover {
-  color: #ffffff;
+  color: #8c8c8c;
 }
 
 .table td:nth-child(2),
