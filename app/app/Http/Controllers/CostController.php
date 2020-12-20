@@ -16,12 +16,24 @@ class CostController extends Controller
         // $date = Traffic::select('created_at')->format('Y年m月')->get();
         // $traffic_lists = Carbon::parse($date)->format('Y年m月');
         // $date->format('Y年m月');
+        // $month = \App\User::select()
+        //     ->join('user_info','user_info.user_employee_number','=','traffic_info.user_employee_number')
+        //     ->where('created_at',1)
+        //     ->get();
 
-
-
-        //$month = strtotime($month);
+        
         //$traffic_lists = Traffic::find($id)->where('create_at', $month);
         
+
+        // $dt_from = new \Carbon\Carbon();
+		// $dt_from->startOfMonth();
+
+		// $dt_to = new \Carbon\Carbon();
+		// $dt_to->endOfMonth();
+
+		// $month = Traffic::whereBetween('created_at', [$dt_from, $dt_to])->get();
+        // $month = strtotime($month);
+        // $month = date('Y年m月',$month);
 
         return view('costs/index', [
             'traffics' => $traffics,

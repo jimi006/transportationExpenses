@@ -4,16 +4,16 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-4">
-        <nav class="panel panel-default">
+        <nav class="panel panel-info">
           <div class="panel-heading">交通費申請フォーム</div>
           <div class="panel-body">
-            <a href="#" class="btn btn-default btn-block">
+            <a href="{{ route('mypage.create') }}" class="btn btn-default btn-block">
              交通費を申請する
             </a>
           </div>
           <div class="list-group">
             @foreach($traffics as $traffic)
-            <a href="{{ route('costs.index', ['id' => $traffic->id ,'month'  =>$traffic['created_at']->format('Ym') ]) }}"  class="list-group-item {{ $current_traffic_id === $traffic->id ? 'active' : '' }}">
+            <a href="{{ route('costs.index', ['id' => $traffic->id ,'month'  =>$traffic['created_at']->format('Ym') ]) }}"  class="list-group-item  {{ $current_traffic_id === $traffic->id ? 'list-group-item-info' : '' }}">
             {{$traffic['created_at']->format('Y年m月')}}
             </a>
             @endforeach
@@ -21,11 +21,11 @@
         </nav>
       </div>
       <div class="column col-md-8">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
           <div class="panel-heading">申請一覧</div>
           <!-- <div class="panel-body">
             <div class="text-right">
-              <a href="#" class="btn btn-default btn-block">
+              <a href="#" class="btn btn-info btn-block">
                 タスクを追加する
               </a>
             </div>

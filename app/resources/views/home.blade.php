@@ -4,13 +4,13 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
-        <nav class="panel panel-default">
+        <nav class="panel panel-info">
           <div class="panel-heading">
             交通費申請をしましょう
           </div>
           <div class="panel-body">
             <div class="text-center">
-              <a href="{{ route('costs.index', ['id'=>1]) }}" class="btn btn-primary">
+              <a href="{{ route('costs.index', ['id'=>1]) }}" class="btn btn-info">
                 マイページへ
               </a>
             </div>
