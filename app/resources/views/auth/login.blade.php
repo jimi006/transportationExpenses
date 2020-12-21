@@ -25,6 +25,7 @@
                 <input type="password" class="form-control" id="password" name="password" />
               </div>
               <div class="text-right">
+                <!-- <input type="hidden" name="month" value="{{$month ?? ''}}"> -->
                 <button type="submit" class="btn btn-primary">送信</button>
               </div>
             </form>

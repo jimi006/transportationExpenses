@@ -10,7 +10,7 @@
           </div>
           <div class="panel-body">
             <div class="text-center">
-              <a href="{{ route('costs.index', ['id'=>1]) }}" class="btn btn-info">
+              <a href="{{ route('costs.index', ['id'=>0, 'month'=>0]) }}" class="btn btn-info">
                 マイページへ
               </a>
             </div>
