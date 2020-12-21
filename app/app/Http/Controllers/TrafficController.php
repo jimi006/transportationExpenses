@@ -31,10 +31,13 @@ class TrafficController extends Controller
         $traffic->traffic_user_comments = $request->traffic_user_comments;
     // インスタンスの状態をデータベースに書き込む
         $traffic->save();
-        // Auth::user()->traffics()->save($traffic);
+       
+        $toMonth = date("Y-m");
+        $month = $toMonth;
 
         return redirect()->route('costs.index', [
         'id' => $traffic->id,
+        'month' => $month,
         ]);
     }
 }

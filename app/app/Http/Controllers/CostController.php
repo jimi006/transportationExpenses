@@ -4,57 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Traffic;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CostController extends Controller
 {
-    //string $month
-    public function index(int $id)
+    //string $targetMonth
+    public function index(int $id, string $targetMonth)
     {
-        // $date = Traffic::all(date('Y年m月',  strtotime('created_at')));
-        $traffics = Traffic::all(); 
-        // $date = Traffic::select('created_at')->format('Y年m月')->get();
-        // $traffic_lists = Carbon::parse($date)->format('Y年m月');
-        // $date->format('Y年m月');
-        // $month = \App\User::select()
-        //     ->join('user_info','user_info.user_employee_number','=','traffic_info.user_employee_number')
-        //     ->where('created_at',1)
-        //     ->get();
+        $user = Auth::user();
+        $employeeNum= $user['user_employee_number'];
 
+        if(empty($targetMonth))
+        {
+            $toMonth = date("Y-m");
+            $targetMonth = $toMonth;
+        }
         
-        //$traffic_lists = Traffic::find($id)->where('create_at', $month);
-        
+        $months = Traffic::select('created_at')->get();
+        $array = [];
+        foreach ($months as $month) {
+            $data = date( 'Y-m', strtotime($month->created_at));
+            $array[] = $data;
+        }
+        $months = array_unique($array);
 
-        // $dt_from = new \Carbon\Carbon();
-		// $dt_from->startOfMonth();
+        $firstDate = date('Y-m-d', strtotime('first day of ' . $targetMonth));
+        $lastDate = date('Y-m-d', strtotime('last day of ' . $targetMonth));
 
-		// $dt_to = new \Carbon\Carbon();
-		// $dt_to->endOfMonth();
-
-		// $month = Traffic::whereBetween('created_at', [$dt_from, $dt_to])->get();
-        // $month = strtotime($month);
-        // $month = date('Y年m月',$month);
+        $traffics = Traffic::whereBetween('created_at', [$firstDate, $lastDate])
+            ->where('user_employee_number', $employeeNum)
+            ->get();
 
         return view('costs/index', [
             'traffics' => $traffics,
             'current_traffic_id' => $id,
+            'months' => $months,
         ]);
     }
-
-    // public function index(int $id, string $month)
-    // {
-    //     if($month == null){
-    //     $traffics = Traffic::find(1);
-    //     }else{
-    //         $traffics = Traffic::find(1);
-    //         $traffic_lists = Traffic::find(1)->where('create_at', $month);
-    //     }
-    //     return view('costs/index', [
-    //         'traffics' => $traffics,
-    //         'traffic_lists'=>$traffic_lists,
-    //         'current_traffic_id' => $id,
-    //     ]);
-    // }
 }
 
 

@@ -44,9 +44,4 @@ class User extends Authenticatable
     {
         Mail::to($this)->send(new ResetPassword($token));
     }
-    
-    public function traffics()
-    {
-        return $this->hasMany('App\Traffic');
-    }
 }
